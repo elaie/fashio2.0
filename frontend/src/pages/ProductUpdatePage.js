@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, CardColumns, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { Spinner } from 'react-bootstrap'
@@ -7,7 +7,7 @@ import { getProductDetails, updateProduct } from '../actions/productActions'
 import { checkTokenValidation, logout } from '../actions/userActions'
 import { UPDATE_PRODUCT_RESET } from '../constants'
 import Message from '../components/Message'
-
+import stockImg from "./img-not-found.jpg";
 
 const ProductUpdatePage = ({ match }) => {
 
@@ -23,18 +23,22 @@ const ProductUpdatePage = ({ match }) => {
         });
     }
 
-
+    const [product_from, setProduct_from] = useState("");
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
     const [price, setPrice] = useState("")
     const [stock, setStock] = useState(product.stock)
     const [image, setImage] = useState("")
+    const [image2, setImage2] = useState("");
+    const [image3, setImage3] = useState("");
 
     let history = useHistory()
     const dispatch = useDispatch()
 
     const [newImage, setNewImage] = useState(false)
-
+    const [newImage2, setNewImage2] = useState(false)
+    const [newImage3, setNewImage3] = useState(false)
+    
     // login reducer
     const userLoginReducer = useSelector(state => state.userLoginReducer)
     const { userInfo } = userLoginReducer
@@ -64,11 +68,14 @@ const ProductUpdatePage = ({ match }) => {
         e.preventDefault()
         const productId = product.id
         let form_data = new FormData()
-        form_data.append('name', name)
-        form_data.append('description', description)
-        form_data.append('price', price)
-        form_data.append('stock', stock)
-        form_data.append('image', image)
+        form_data.append("product_from",product_from);
+        form_data.append("name", name);
+        form_data.append("description", description);
+        form_data.append("price", price);
+        form_data.append("stock", stock);
+        form_data.append("image", image);
+        form_data.append("image2", image2);
+        form_data.append("image3", image3);
 
         dispatch(updateProduct(productId, form_data))
     }
@@ -115,8 +122,9 @@ const ProductUpdatePage = ({ match }) => {
                 </span>
             </span> : ""}
             <Form onSubmit={onSubmit}>
-
-                <Form.Group controlId='image'>
+               <CardColumns>
+               
+               <Form.Group controlId='image'>
                     <Form.Label>
                         <b>
                             Product Image
@@ -159,6 +167,93 @@ const ProductUpdatePage = ({ match }) => {
                     }
                 </Form.Group>
 
+                <Form.Group controlId='image2'>
+                    <Form.Label>
+                        <b>
+                            Product Image
+                        </b>
+                    </Form.Label>
+                    <p>
+                        <img src={product.image2} alt={product.name} height="200" />
+                    </p>
+
+                    {newImage2 ?
+                        <div>
+                            <Form.Control
+                                type="file"
+                                onChange={(e) => setImage2(e.target.files[0])}
+                            >
+                            </Form.Control>
+
+                            <span
+                                onClick={() => {
+                                    setNewImage2(!newImage)
+                                    setImage2("")
+                                    dispatch({
+                                        type: UPDATE_PRODUCT_RESET
+                                    })
+                                }}
+                                className="btn btn-primary btn-sm mt-2"
+                            >
+                                Cancel
+                            </span>
+                        </div>
+                        :
+                        <p>
+                            <span
+                                onClick={() => setNewImage2(!newImage2)}
+                                className="btn btn-success btn-sm"
+                            >
+                                choose different image
+                            </span>
+                        </p>
+                    }
+                </Form.Group>
+
+                <Form.Group controlId='image3'>
+                    <Form.Label>
+                        <b>
+                            Product Image
+                        </b>
+                    </Form.Label>
+                    <p>
+                        <img src={product.image3} alt={product.name} height="200" />
+                    </p>
+
+                    {newImage3 ?
+                        <div>
+                            <Form.Control
+                                type="file"
+                                onChange={(e) => setImage3(e.target.files[0])}
+                            >
+                            </Form.Control>
+
+                            <span
+                                onClick={() => {
+                                    setNewImage3(!newImage3)
+                                    setImage3("")
+                                    dispatch({
+                                        type: UPDATE_PRODUCT_RESET
+                                    })
+                                }}
+                                className="btn btn-primary btn-sm mt-2"
+                            >
+                                Cancel
+                            </span>
+                        </div>
+                        :
+                        <p>
+                            <span
+                                onClick={() => setNewImage3(!newImage3)}
+                                className="btn btn-success btn-sm"
+                            >
+                                choose different image
+                            </span>
+                        </p>
+                    }
+                </Form.Group>
+               </CardColumns>
+               
                 <Form.Group controlId='name'>
                     <Form.Label>
                         <b>
@@ -170,7 +265,10 @@ const ProductUpdatePage = ({ match }) => {
                         type="text"
                         defaultValue={product.name}
                         placeholder="product name"
-                        onChange={(e) => setName(e.target.value)}
+                        onChange={(e) => {
+                            setName(e.target.value)
+                            setProduct_from(userInfo.username)
+                        }}
                     >
                     </Form.Control>
                 </Form.Group>

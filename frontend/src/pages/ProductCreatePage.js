@@ -51,7 +51,7 @@ const ProductCreatePage = () => {
     e.preventDefault();
 
     let form_data = new FormData();
-    form_data.append("product_from",product_from);
+    form_data.append("product_from", product_from);
     form_data.append("name", name);
     form_data.append("description", description);
     form_data.append("price", price);
@@ -98,8 +98,8 @@ const ProductCreatePage = () => {
             value={name}
             placeholder="product name"
             onChange={(e) => {
-              setName(e.target.value)
-              setProduct_from(userInfo.username)
+              setName(e.target.value);
+              setProduct_from(userInfo.username);
             }}
           ></Form.Control>
         </Form.Group>
@@ -150,25 +150,27 @@ const ProductCreatePage = () => {
           <Form.Control
             required
             type="file"
-            onChange={(e) =>{ setImage(e.target.files[0])}}
+            onChange={(e) => {
+              setImage(e.target.files[0]);
+            }}
           ></Form.Control>
-
         </Form.Group>
         <Form.Group controlId="image2">
           <Form.Label>
             <b>Product Image</b>
           </Form.Label>
-          <Form.Control 
+          <Form.Control
+            required
             type="file"
             onChange={(e) => setImage2(e.target.files[0])}
           ></Form.Control>
-
         </Form.Group>
         <Form.Group controlId="image3">
           <Form.Label>
             <b>Product Image</b>
           </Form.Label>
           <Form.Control
+            required
             type="file"
             onChange={(e) => setImage3(e.target.files[0])}
           ></Form.Control>
@@ -185,9 +187,8 @@ const ProductCreatePage = () => {
           variant="primary"
           className="btn-sm ml-2 button-focus-css"
           onClick={() => {
-            history.push("/")
-          }
-        }
+            history.push("/");
+          }}
         >
           Cancel
         </Button>
