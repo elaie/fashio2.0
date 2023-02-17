@@ -8,6 +8,7 @@ import { CREATE_PRODUCT_RESET } from "../constants";
 import Message from "../components/Message";
 import stockImg from "./img-not-found.jpg";
 
+
 const ProductCreatePage = () => {
   let history = useHistory();
   const dispatch = useDispatch();
