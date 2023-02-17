@@ -33,11 +33,14 @@ class ProductCreateView(APIView):
         data = request.data
 
         product = {
+            "product_from": data["product_from"],
             "name": data["name"],
             "description": data["description"],
             "price": data["price"],
             "stock": data["stock"],
             "image": data["image"],
+            "image2": data["image2"],
+            "image3": data["image3"],
         }
 
         serializer = ProductSerializer(data=product, many=False)
@@ -70,11 +73,14 @@ class ProductEditView(APIView):
         product = Product.objects.get(id=pk)
         
         updated_product = {
+            "product_from": data["product_from"] if data["product_from"] else product.product_from,
             "name": data["name"] if data["name"] else product.name,
             "description": data["description"] if data["description"] else product.description,
             "price": data["price"] if data["price"] else product.price,
             "stock": data["stock"],
             "image": data["image"] if data["image"] else product.image,
+            "image2": data["image2"] if data["image2"] else product.image2,
+            "image3": data["image3"] if data["image3"] else product.image3,
         }
 
         serializer = ProductSerializer(product, data=updated_product)

@@ -148,7 +148,7 @@ function ProductDetailsPage({ history, match }) {
 
               <Col sm>
               <Link to={`${product.id}/checkout/`}>
-              <b>from {product.produce_from}</b>
+              <b>from {product.product_from}</b>
               </Link>
                
                 <br></br>

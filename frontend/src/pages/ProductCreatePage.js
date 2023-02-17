@@ -6,16 +6,19 @@ import { useHistory } from "react-router";
 import { checkTokenValidation, logout } from "../actions/userActions";
 import { CREATE_PRODUCT_RESET } from "../constants";
 import Message from "../components/Message";
+import stockImg from "./img-not-found.jpg";
 
 const ProductCreatePage = () => {
   let history = useHistory();
   const dispatch = useDispatch();
-
+  const [product_from, setProduct_from] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState("100");
   const [stock, setStock] = useState(false);
   const [image, setImage] = useState(null);
+  const [image2, setImage2] = useState(stockImg);
+  const [image3, setImage3] = useState(stockImg);
 
   // login reducer
   const userLoginReducer = useSelector((state) => state.userLoginReducer);
@@ -48,12 +51,14 @@ const ProductCreatePage = () => {
     e.preventDefault();
 
     let form_data = new FormData();
-    form_data.append("produce_from",userInfo.username);
+    form_data.append("product_from",product_from);
     form_data.append("name", name);
     form_data.append("description", description);
     form_data.append("price", price);
     form_data.append("stock", stock);
     form_data.append("image", image);
+    form_data.append("image2", image2);
+    form_data.append("image3", image3);
 
     dispatch(createProduct(form_data));
   };
@@ -92,7 +97,10 @@ const ProductCreatePage = () => {
             type="text"
             value={name}
             placeholder="product name"
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => {
+              setName(e.target.value)
+              setProduct_from(userInfo.username)
+            }}
           ></Form.Control>
         </Form.Group>
 
@@ -142,10 +150,29 @@ const ProductCreatePage = () => {
           <Form.Control
             required
             type="file"
-            onChange={(e) => setImage(e.target.files[0])}
+            onChange={(e) =>{ setImage(e.target.files[0])}}
+          ></Form.Control>
+
+        </Form.Group>
+        <Form.Group controlId="image2">
+          <Form.Label>
+            <b>Product Image</b>
+          </Form.Label>
+          <Form.Control 
+            type="file"
+            onChange={(e) => setImage2(e.target.files[0])}
+          ></Form.Control>
+
+        </Form.Group>
+        <Form.Group controlId="image3">
+          <Form.Label>
+            <b>Product Image</b>
+          </Form.Label>
+          <Form.Control
+            type="file"
+            onChange={(e) => setImage3(e.target.files[0])}
           ></Form.Control>
         </Form.Group>
-
         <Button
           type="submit"
           variant="success"
@@ -157,7 +184,10 @@ const ProductCreatePage = () => {
           type="submit"
           variant="primary"
           className="btn-sm ml-2 button-focus-css"
-          onClick={() => history.push("/")}
+          onClick={() => {
+            history.push("/")
+          }
+        }
         >
           Cancel
         </Button>
