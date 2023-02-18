@@ -19,7 +19,7 @@ import ProductCreatePage from './pages/ProductCreatePage'
 import ProductUpdatePage from './pages/ProductUpdatePage'
 import NotFound from './pages/NotFoundPage'
 import homePage from './pages/homePage'
-
+import UserProfile from './pages/UserProfile'
 const App = () => {
 
   return (
@@ -45,6 +45,7 @@ const App = () => {
             <Route path="/all-addresses/:id/" component={AddressUpdatePage} exact />
             <Route path="/all-orders/" component={OrdersListPage} exact />
             <Route path="/product-detail/" component={ProductListPage} exact />
+            <Route path="/user-profile/" component={UserProfile} exact />
             <Route path="" component={NotFound} exact />
           </Switch>
         </div>

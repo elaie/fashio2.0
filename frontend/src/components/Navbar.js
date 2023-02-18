@@ -59,8 +59,11 @@ function NavBar() {
                         {userInfo ?
                             <div>
                                 <NavDropdown className="navbar-nav text-capitalize" title={userInfo.username} id='username'>
-                                <LinkContainer to="/product-detail">
+                                <LinkContainer to="/user-profile">
                                         <NavDropdown.Item>Your Profile</NavDropdown.Item>
+                                    </LinkContainer>
+                                <LinkContainer to="/product-detail">
+                                        <NavDropdown.Item>Your Products</NavDropdown.Item>
                                     </LinkContainer>
                                     <LinkContainer to="/account">
                                         <NavDropdown.Item>Account Settings</NavDropdown.Item>
