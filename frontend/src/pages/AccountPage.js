@@ -61,15 +61,15 @@ function AccountPage() {
                     <Container>
                         <Row className="mr-6 mb-2 border border-dark">
                             <Col xs={2} className="p-3 bg-info text-white">Name:</Col>
-                            <Col className="p-3">{userAccDetails.username}</Col>
+                            <Col className="p-3">{userInfo.username}</Col>
                         </Row>
                         <Row className="mb-2 border border-dark">
                             <Col xs={2} className="p-3 bg-info text-white">Email:</Col>
-                            <Col className="p-3">{userAccDetails.email}</Col>
+                            <Col className="p-3">{userInfo.email}</Col>
                         </Row>
                         <Row className="mb-2 border border-dark">
                             <Col xs={2} className="p-3 bg-info text-white">Admin Privileges:</Col>
-                            <Col className="p-3">{userAccDetails.admin ? "Yes" : "No"}</Col>
+                            <Col className="p-3">{userInfo.admin ? "Yes" : "No"}</Col>
                         </Row>
                     </Container>
                     <span style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
