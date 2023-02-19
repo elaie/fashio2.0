@@ -1,0 +1,36 @@
+* {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  /** Global colors */
+  --twitter-color: rgb(29, 161, 242);
+  --twitter-lighter-color: rgb(142,208,249);
+  --twitter-lightest-color: rgba(29, 161, 242, 0.1);
+  --twitter-darker-color: rgb(26, 145, 218);
+  --twitter-border: rgb(235, 238, 240);
+  --twitter-background: rgb(247, 249, 250);
+  --twitter-grey: rgb(83, 100, 113);
+  --twitter-red: rgb(202, 32, 85);
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10px;
+}
+
+input:focus {
+  outline: none !important;
+}
+
+.disable-select {
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
