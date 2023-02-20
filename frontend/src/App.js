@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import ProductListPage from './pages/ProductsListPage'
 import ProductDetailsPage from './pages/ProductDetailsPage'
@@ -20,15 +21,29 @@ import ProductUpdatePage from './pages/ProductUpdatePage'
 import NotFound from './pages/NotFoundPage'
 import homePage from './pages/homePage'
 import UserProfile from './pages/UserProfile'
+import Feed from './pages/Feed'
+import Profile from './pages/Profile'
+import APIHelper from './helpers/api'
 const App = () => {
-
+  const [user, setUser] = useState({});
+  console.log("printing in app")
+  const userLoginReducer = useSelector(state => state.userLoginReducer)
+  const { userInfo } = userLoginReducer
+  useEffect(() =>{ // componentWillMount
+    APIHelper.getCurrentUserInfo().then(user => {
+      setUser(user);
+    });
+  }, []);
+  console.log('printing in app.js')
+  console.log(user)
+  console.log(userInfo)
   return (
     <div>
       <Router>
         <NavBar />
         <div className="container mt-4">
           <Switch>
-            <Route path="/" component={homePage} exact />
+          <Route path="/" component={Feed} exact /> 
             <Route path="/new-product/" component={ProductCreatePage} exact />
             <Route path="/product/:id/" component={ProductDetailsPage} exact />
             <Route path="/product-update/:id/" component={ProductUpdatePage} exact />

@@ -9,6 +9,7 @@ import APIHelper from '../helpers/api';
 import '../styles/components/Feed.css';
 
 function Feed({ user }) {
+    console.log("printing in feed")
     const [posts, setPosts] = useState([]);
     const [pageCount, setPageCount] = useState(1);
     const [currentPage, setCurrentPage] = useState(0);
@@ -28,6 +29,7 @@ function Feed({ user }) {
         }
         return APIHelper.getAllTweets(args)
             .then(obj => {
+                console.log('INSIDE API HELPER')
                 if (!('tweets' in obj)) {
                     return console.error('tweets not in getAllTweets')
                 }
@@ -68,7 +70,7 @@ function Feed({ user }) {
             </div>
             
             {/* TweetBox */}
-            <Tweetbox isEditMode={false} avatar={user.photo} fetchPosts={fetchPosts}/>
+            <Tweetbox isEditMode={false}  fetchPosts={fetchPosts}/>
             <div className="feed__seperator"></div>
 
             {/* FeedTweets Tabs */}

@@ -11,7 +11,6 @@ import {useHistory} from 'react-router-dom'
 
 function AccountPage() {
 
-
     let history = useHistory()
     const dispatch = useDispatch()
 

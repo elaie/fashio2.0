@@ -9,7 +9,7 @@ api_router.register(r'user', views.UserAPIView)
 api_router.register(r'tweet', views.TweetAPIView)
 api_router.register(r'tweet_like', views.TweetLikeAPIView)
 api_router.register(r'follow', views.FollowAPIView)
-
+print("API ROUTER"+str(api_router))
 urlpatterns = [
 
     # user
@@ -32,8 +32,11 @@ urlpatterns = [
 
     # stripe
     path('stripe-cards/', views.CardsListView.as_view(), name="stripe-cards-list-page"),
+
+    
      # --------------------- API
     path('api/', include(api_router.urls)),
     path('api/current_user/', views.CurrentUserView.as_view(), name="current_user"),
     path('api/username/<str:username>/', views.UserByUsernameView.as_view(), name="current_user"),
 ]
+print("PATH: "+str(urlpatterns[13]))

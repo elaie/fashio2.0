@@ -88,8 +88,14 @@ const updateUserInfo = (userInfo) => {
 };
 
 const getAllTweets = (query) => {
+    console.log("get all tweets init")
+    console.log(withQuery("/api/tweet/", query))
     return fetch(withQuery("/api/tweet/", query))
-        .then(response => {
+       .then(response => {
+            console.log("INSIDE FETCH: ")
+            console.log(response.status)
+            console.log(withQuery("/api/tweet/", query))
+            console.log("")
             if (response.status >= 400) {
                 return { 
                     'error': 'Retrieve all tweets: Something went wrong' 

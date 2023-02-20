@@ -47,6 +47,7 @@ function ProductsListPage() {
       error: productCreationError,
     } = createProductReducer;
   
+    console.log(products)
     // check token validation reducer
     const checkTokenValidationReducer = useSelector(
       (state) => state.checkTokenValidationReducer

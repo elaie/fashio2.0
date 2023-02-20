@@ -35,7 +35,7 @@ import '../styles/components/Profile.css';
 
 function UserProfile({ user, classes }) {
     let history = useHistory()
-    const { username } = useParams();
+    const {username} = useParams();
     const [profileUser, setProfileUser] = useState({});
     const [editModalOpen, setEditModalOpen] = useState(false);
     const [editBirthDate, setEditBirthDate] = useState(null);
