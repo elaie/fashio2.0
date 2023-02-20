@@ -1,30 +1,24 @@
-import { Card } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-import React from 'react'
-
+import React from "react";
+import "../pages/product-page.css";
 function Product({ product }) {
-    return (
-        <div>
-            <Card className="mb-4 rounded">
-
-                <Card.Body>
-                <Link to={`/product/${product.id}`}>
-                    <Card.Img variant="top" src={product.image} height="162" />
-                </Link>
-                    <Link to={`/product/${product.id}`}>
-                        <Card.Title as="div">
-                            <strong>{product.name}</strong>
-                        </Card.Title>
-                    </Link>
-
-                    <Card.Text as="h3">
-                        ₹ {product.price}
-                    </Card.Text>
-                </Card.Body>
-            </Card>
-        </div>
-    )
+  return (
+    <div>
+      <div className="product-card">
+    
+          <Link to={`/product/${product.id}`}>
+            <img className="product-image" src={product.image} />
+          </Link>
+          <Link to={`/product/${product.id}`}>
+            <p className="product-price">{product.name}</p>
+          </Link>
+          <Card.Text as="h3">₹ {product.price}</Card.Text>
+       
+      </div>
+    </div>
+  );
 }
 
-export default Product
+export default Product;

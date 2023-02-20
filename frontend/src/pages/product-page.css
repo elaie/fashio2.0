@@ -1,0 +1,130 @@
+.product-page {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px auto;
+    max-width: 1200px;
+  }
+  
+  .product-images {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+  }
+  
+  .product-images img {
+    margin-bottom: 20px;
+    max-width: 100%;
+    object-fit: contain;
+    border: 1px solid #ccc;
+  }
+  
+  .product-info {
+    width: 55%;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-info h1 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .product-info p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  
+  .product-info h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #f26a7e;
+    margin-bottom: 20px;
+  }
+  
+  .color-options {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .color-options button {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .color-options button.selected {
+    border: 2px solid #f26a7e;
+  }
+  
+  .size-options {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .size-options button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #666;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .size-options button.selected {
+    background-color: #f26a7e;
+    color: #fff;
+  }
+  
+  .buy-now-button {
+    display: block;
+    margin: 30px 0;
+    padding: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f26a7e;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .product-description {
+    margin-top: 30px;
+    border-top: 1px solid #ccc;
+    padding-top: 30px;
+  }
+  
+  .product-description h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .product-description p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.5;
+  }
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .container3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .image {
+    width: 30%;
+    height: auto;
+  }
