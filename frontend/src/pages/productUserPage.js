@@ -1,61 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPostList } from '../actions/postActions';
+import { getProductsList } from '../actions/productActions';
 import Message from '../components/Message';
 import { Spinner, Row, Col } from 'react-bootstrap';
-import Post from '../components/posts';
+import Product from '../components/Product';
 import { useHistory } from "react-router-dom";
-import { CREATE_POST_RESET } from '../constants';
+import { CREATE_PRODUCT_RESET } from '../constants';
+import { Form, Button } from "react-bootstrap";
+import { createProduct } from "../actions/productActions";
 import { checkTokenValidation, logout } from "../actions/userActions";
+import stockImg from "./img-not-found.jpg";
 
 
-function ProductsUserListPage() {
-    console.log("PRODUCT USER LIST PAGE INIT")
+function ProductsUserListPage(props) {
+    console.log("PRODUCT USER PAGE INIT")
+    const myString = props.match.params.str;
+    console.log(props.match.params.str)
+    console.log("string: "+myString)
     let history = useHistory()
     let searchTerm = history.location.search
     const dispatch = useDispatch()
 
     // products list reducer
-    const postListReducer = useSelector(state => state.postListReducer)
-    const { loading, error, posts } = postListReducer
+    const productsListReducer = useSelector(state => state.productsListReducer)
+    const { loading, error, products } = productsListReducer
 
   
     // login reducer
     const userLoginReducer = useSelector((state) => state.userLoginReducer);
     const { userInfo } = userLoginReducer;
   
-    // create product reducer
-    const createProductReducer = useSelector(
-      (state) => state.createProductReducer
-    );
-  
-    // check token validation reducer
-    const checkTokenValidationReducer = useSelector(
-      (state) => state.checkTokenValidationReducer
-    );
-    const { error: tokenError } = checkTokenValidationReducer;
-  
+   
     useEffect(() => {
       if (!userInfo) {
         history.push("/login");
       }
       dispatch(checkTokenValidation());
     }, [dispatch, userInfo, history]);
+
   
-   
-  
-    if (userInfo && tokenError === "Request failed with status code 401") {
-      alert("Session expired, please login again.");
-      dispatch(logout());
-      history.push("/login");
-      window.location.reload();
-    }
-    
+ 
 
     useEffect(() => {
-        dispatch(getPostList())
+        dispatch(getProductsList())
         dispatch({
-            type: CREATE_POST_RESET
+            type: CREATE_PRODUCT_RESET
         })
         //dispatch(checkTokenValidation())
     }, [dispatch])
@@ -79,23 +68,24 @@ function ProductsUserListPage() {
                     <Spinner animation="border" />
                 </span>
             </span>}
-            <div>         
+            <div>
+            
                 <Row>
 
                     {/* If length of the filter result is equal to 0 then show 'nothing found' message
                         with help of showNothingMessage function else show the filtered result on the
                         webpage and then run the map function */}
                     
-                    {(posts.filter((item) =>
-                        userInfo.username == userInfo.username
+                    {(products.filter((item) =>
+                        item.product_from == myString
                     )).length === 0 ? showNothingMessage() : 
                     
-                    (posts.filter((item) =>
-                    userInfo.username == userInfo.username
-                    )).map((post) => (
-                        <Col key={post.id} sm={12} md={6} lg={4} xl={3}>
+                    (products.filter((item) =>
+                    item.product_from == myString
+                    )).map((product, idx) => (
+                        <Col key={product.id} sm={12} md={6} lg={4} xl={3}>
                             <div className="mx-2"> 
-                                <Post post={post} />
+                                <Product product={product} />
                             </div>
                         </Col>
                     )

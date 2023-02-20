@@ -21,7 +21,7 @@ import {
 
 function ProductDetailsPage({ history, match }) {
   const dispatch = useDispatch();
-
+  console.log("PRODUCT DETAIL PAGE")
   // modal state and functions
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -147,7 +147,7 @@ function ProductDetailsPage({ history, match }) {
               </Col>
 
               <Col sm>
-              <Link to={`${product.id}/checkout/`}>
+              <Link to={`/userProfile/${product.product_from}`}>
               <b>from {product.product_from}</b>
               </Link>
                
