@@ -25,7 +25,7 @@ class ProductApiTest(TestCase):
         )
 
     def test_home_page_api(self):
-        response = self.client.get("/api/products/")
+        response = self.client.get("/product/products/")
         self.assertEqual(response.status_code, 200)
 
     def test_string_representation(self):
@@ -47,7 +47,7 @@ class ProductApiTest(TestCase):
         self.assertContains(response, "apple.png")
 
     def test_product_details_page(self):
-        response = self.client.get("/api/product/1/")
+        response = self.client.get("/product/product/1/")
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Apple Watch")
         self.assertContains(response, "Great Watch")

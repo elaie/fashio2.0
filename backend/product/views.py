@@ -26,8 +26,6 @@ class ProductDetailView(APIView):
 
 class ProductCreateView(APIView):
 
-    permission_classes = [permissions.IsAdminUser]
-
     def post(self, request):
         user = request.user
         data = request.data
@@ -49,19 +47,6 @@ class ProductCreateView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response({"detail": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
-
-
-class ProductDeleteView(APIView):
-
-    permission_classes = [permissions.IsAdminUser]
-
-    def delete(self, request, pk):
-        try:
-            product = Product.objects.get(id=pk)
-            product.delete()
-            return Response({"detail": "Product successfully deleted."}, status=status.HTTP_204_NO_CONTENT)
-        except:
-            return Response({"detail": "Not found."}, status=status.HTTP_404_NOT_FOUND)
 
 
 class ProductEditView(APIView):
@@ -89,3 +74,19 @@ class ProductEditView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response({"detail": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+class ProductDeleteView(APIView):
+
+    permission_classes = [permissions.IsAdminUser]
+
+    def delete(self, request, pk):
+        try:
+            product = Product.objects.get(id=pk)
+            product.delete()
+            return Response({"detail": "Product successfully deleted."}, status=status.HTTP_204_NO_CONTENT)
+        except:
+            return Response({"detail": "Not found."}, status=status.HTTP_404_NOT_FOUND)
+
+
