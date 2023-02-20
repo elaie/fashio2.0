@@ -59,7 +59,7 @@ function NavBar() {
                         {userInfo ?
                             <div>
                                 <NavDropdown className="navbar-nav text-capitalize" title={userInfo.username} id='username'>
-                                <LinkContainer to="/user-profile">
+                                <LinkContainer to="/user-product-profile">
                                         <NavDropdown.Item>Your Profile</NavDropdown.Item>
                                     </LinkContainer>
                                 <LinkContainer to="/product-detail">

@@ -15,7 +15,13 @@ import {
     deleteSavedCardReducer,
     updateStripeCardtReducer
 } from "./cardReducers";
-
+import{
+    postListReducer,
+    postDetailsReducer,
+    createPostReducer,
+    updatePostReducer,
+    deletePostReducer,
+} from "./postReducers"
 import {
     userLoginReducer,
     userRegisterReducer,
@@ -55,6 +61,11 @@ const allReducers = combineReducers({
     userDetailsReducer,
     userDetailsUpdateReducer,
     deleteUserAccountReducer,
+    postListReducer,
+    postDetailsReducer,
+    createPostReducer,
+    updatePostReducer,
+    deletePostReducer,
 })
 
 
