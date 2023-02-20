@@ -10,7 +10,7 @@ import { checkTokenValidation, logout } from "../actions/userActions";
 
 
 function ProductsUserListPage() {
-
+    console.log("PRODUCT USER LIST PAGE INIT")
     let history = useHistory()
     let searchTerm = history.location.search
     const dispatch = useDispatch()
@@ -87,11 +87,11 @@ function ProductsUserListPage() {
                         webpage and then run the map function */}
                     
                     {(posts.filter((item) =>
-                        item.product_from == userInfo.username
+                        userInfo.username == userInfo.username
                     )).length === 0 ? showNothingMessage() : 
                     
                     (posts.filter((item) =>
-                    item.post_name == userInfo.username
+                    userInfo.username == userInfo.username
                     )).map((post) => (
                         <Col key={post.id} sm={12} md={6} lg={4} xl={3}>
                             <div className="mx-2"> 

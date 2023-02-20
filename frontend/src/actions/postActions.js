@@ -30,7 +30,7 @@ export const getPostList = () => async (dispatch) => {
         })
 
         // call api
-        const { data } = await axios.get("/api/posts/")
+        const { data } = await axios.get("/posts/post/")
 
         dispatch({
             type: POST_LIST_SUCCESS,
@@ -53,7 +53,7 @@ export const getPostDetails = (id) => async (dispatch) => {
         })
 
         // call api
-        const { data } = await axios.get(`/api/posts/${id}/`)
+        const { data } = await axios.get(`/posts/post/${id}/`)
 
         dispatch({
             type: POST_DETAILS_SUCCESS,
@@ -90,7 +90,7 @@ export const createPost = (posts) => async (dispatch, getState) => {
 
         // api call
         const { data } = await axios.post(
-            "/api/posts-create/",
+            "/posts/post-create/",
             posts,
             config
         )
@@ -128,7 +128,7 @@ export const deletePost = (id) => async (dispatch, getState) => {
 
         // api call
         const { data } = await axios.delete(
-            `/api/posts-delete/${id}/`,
+            `/posts/post-delete/${id}/`,
             config
         )
 
@@ -167,7 +167,7 @@ export const updatePost = (id, posts) => async (dispatch, getState) => {
 
         // api call
         const { data } = await axios.put(
-            `/api/posts-update/${id}/`,
+            `/post/post-update/${id}/`,
             posts,
             config
         )
