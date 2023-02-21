@@ -1,5 +1,3 @@
-
-
 ### Other_Functionalities
 - Used JSON web tokens to achieve the authentication checks in the website.
 - Strict Security Checking behind the scenes during the Card Creation and Payment Process.
